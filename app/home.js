@@ -1,4 +1,4 @@
-import { View, text } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Home = () => {
     return (

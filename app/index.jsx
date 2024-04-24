@@ -35,11 +35,11 @@ const Login = () => {
                 </View>
                 <Text style={stylesHome.inputLabels}>No. de Record o Cédula:</Text>
                 <View style={{width: '95%', paddingHorizontal: '8%'}}>
-                    <TextInput style={stylesHome.inputs} placeholder='125690' placeholderTextColor={COLORS.gray}/>
+                    <TextInput keyboardType='numeric' style={stylesHome.inputs} placeholder='125690' placeholderTextColor={COLORS.gray}/>
                 </View>
                 <Text style={stylesHome.inputLabels}>Contraseña:</Text>
                 <View style={{width: '95%', paddingHorizontal: '8%'}}>
-                    <TextInput style={stylesHome.inputs}/>
+                    <TextInput secureTextEntry={true} style={stylesHome.inputs}/>
                 </View>
                 <View style={{width: '95%', paddingLeft: '35%'}}>
                     <TouchableOpacity
@@ -60,7 +60,7 @@ const Login = () => {
                 </View>
                 <View style={{width: '100%', alignContent: 'center', justifyContent: 'center', paddingTop: '40%', flexDirection: 'row'}}>
                     <Text style={{color: COLORS.white}}>¿No tienes una cuenta? </Text>
-                    <Link href='/register'>
+                    <Link href='/registerInfoPersonal'>
                         <Text style={{ color: COLORS.blue, textDecorationLine: 'underline' }}>¡Regístrate Aquí!</Text>
                     </Link>
                 </View>

@@ -29,9 +29,9 @@ InstaSalud is being developed using the following technologies:
 ### Testing the project
 To test the InstaSalud project locally, follow these steps:
 ### 1. Clone the Repository
-    git clone https://github.com/your-username/instasalud.git
+    git clone https://github.com/your-username/instasaludMobile.git
 ### 2. Install Dependencies
-    cd instasalud
+    cd instasaludMobile
     npm install
 ### 3. Start Development Server
     npm start

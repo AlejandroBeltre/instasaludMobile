@@ -25,8 +25,6 @@ InstaSalud is being developed using the following technologies:
 - <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" height="15" width="15"/>JavaScript - The primary programming language used in the project.
 - <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg" height="15" width="15"/>Node.js - A JavaScript runtime environment for server-side development.
 - <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original.svg" height="15" width="15"/>MySQL - An open-source relational database management system for storing and retrieving data.
-- <img src="https://github.com/devicons/devicon/blob/master/icons/figma/figma-original.svg" height="15" width="15"/>Figma - A collaborative design tool used for creating the user interface designs.
-- <img src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg" height="15" width="15"/> Visual Studio Code - A popular code editor used for writing and editing the project's codebase.
 ---
 ### Testing the project
 To test the InstaSalud project locally, follow these steps:

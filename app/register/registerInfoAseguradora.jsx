@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView, ImageBackground, TextInput, TouchableOpacity, Pressable } from 'react-native';
-import { Link, router, useRouter } from 'expo-router';
-import { COLORS } from '../constants';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { useRouter } from 'expo-router';
+import { COLORS } from '../../constants';
 import { SelectList } from 'react-native-dropdown-select-list';
 
 
@@ -12,26 +11,21 @@ const Register = () => {
     const [date, setDate] = useState(new Date());
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [showPicker, setShowPicker] = useState(false);
-    const headerImageSource = require('../assets/images/registerHeader.png');
+    const headerImageSource = require('../../assets/images/registerHeader.png');
     const [isPressed, setIsPressed] = useState(false);
     const [selected, setSelected] = React.useState("");
 
-    const tipoDocumento = [
-        {key:'1', value: 'Cédula'},
-        {key:'2', value: 'Pasaporte'}
-    ];
-
-    const pais = [
-        {key:'1', value: 'Rep. Dominicana'},
-        {key:'2', value: 'Puerto Rico'},
-        {key:'3', value: 'Estados Unidos'},
-        {key:'4', value: 'Brazil'},
-        {key:'5', value: 'Chile'},
-        {key:'6', value: 'Colombia'},
-        {key:'7', value: 'Argentina'},
-        {key:'8', value: 'México'},
-        {key:'9', value: 'Cánada'},
-        {key:'10', value: 'Cuba'}
+    const aseguradora = [
+        {key:'1', value: 'BMI Compañía de Seguros'},
+        {key:'2', value: 'Humano Seguros'},
+        {key:'3', value: 'Universal Seguros'},
+        {key:'4', value: 'Palic Seguros'},
+        {key:'5', value: 'Seguros Reservas'},
+        {key:'6', value: 'Seguros Universal'},
+        {key:'7', value: 'Seguros Sura'},
+        {key:'8', value: 'Seguros Constitución'},
+        {key:'9', value: 'Seguros Banreservas'},
+        {key:'10', value: 'Seguros Universal'}
     ];
 
     const handlePressIn = () => {
@@ -65,12 +59,12 @@ const Register = () => {
                     <Text style={{color: COLORS.white, fontSize: 30, fontWeight: 'bold'}}>Regístrate</Text>
                     <View style={{height: 10}}/>
                     <View style={{flexDirection: 'row', alignItems:'center'}}>
-                        <View style={{width: 30, height: 30, borderRadius: 15, backgroundColor: COLORS.teal, alignItems: 'center', justifyContent: 'center'}}>
-                            <Text style={{color: COLORS.white, fontWeight: 'bold', fontSize: 18}}>1</Text>
+                        <View style={{width: 30, height: 30, borderRadius: 15, backgroundColor: COLORS.white2, alignItems: 'center', justifyContent: 'center'}}>
+                            <Text style={{color: COLORS.teal, fontWeight: 'bold', fontSize: 18}}>1</Text>
                         </View>
                         <View style={{height: 2, width: 100, backgroundColor: COLORS.white}}/>
-                        <View style={{width: 30, height: 30, borderRadius: 15, backgroundColor: COLORS.white2, alignItems: 'center', justifyContent: 'center'}}>
-                            <Text style={{color: COLORS.teal, fontWeight: 'bold', fontSize: 18}}>2</Text>
+                        <View style={{width: 30, height: 30, borderRadius: 15, backgroundColor: COLORS.teal, alignItems: 'center', justifyContent: 'center'}}>
+                            <Text style={{color: COLORS.white, fontWeight: 'bold', fontSize: 18}}>2</Text>
                         </View>
                         <View style={{height: 2, width: 100, backgroundColor: COLORS.white}}/>
                         <View style={{width: 30, height: 30, borderRadius: 15, backgroundColor: COLORS.white2, alignItems: 'center', justifyContent: 'center'}}>
@@ -82,50 +76,34 @@ const Register = () => {
             <View>
                 <View style={{height: 10}}/>
                 <View style={{alignItems:'center', justifyContent: 'center'}}>
-                        <Text style={{color: COLORS.gray, fontSize: 18}}>Paso 1. Información Personal</Text>
+                    <Text style={{color: COLORS.gray, fontSize: 18}}>Paso 2. Información de la Aseguradora</Text>
+                </View>
+                <View style={{height: 10}}/>
+                <View style={{alignItems:'center', justifyContent: 'center'}}>
+                    <Text style={{color: '#919191', fontSize: 14, textAlign: 'center', padding: 4}}>Si no posee seguro medico o no conoce la información puede omitir este paso presionando “Continuar”.</Text>
                 </View>
                 <View style={{height: 20}}/>
-                <View style={{flexDirection: 'row', width: '100%', paddingHorizontal: '5%', justifyContent: 'center', alignItems: 'center'}}>
-                    <TextInput style={styles.inputs} placeholder='Nombres' placeholderTextColor={COLORS.gray2}/>
-                    <View style={{width: 10}}/>
-                    <TextInput style={styles.inputs} placeholder='Apellidos' placeholderTextColor={COLORS.gray2}/>
+                <View style={{paddingHorizontal: '5%'}}>
+                    <SelectList inputStyles={{fontSize: 14, borderRadius: 15}} data={aseguradora} setSelected={setSelected} placeholder='Aseguradora' searchPlaceholder='Buscar...'/>
                 </View>
                 <View style={{flexDirection: 'row', width: '100%', paddingHorizontal: '4%', justifyContent: 'center', alignItems: 'center', paddingTop: 10}}>
-                    <TextInput keyboardType='email-address' style={styles.input} placeholder='Correo Electrónico (opcional)' placeholderTextColor={COLORS.gray2}/>
-                </View>
-                <View style={{flexDirection: 'row', width: '100%', paddingHorizontal: '4%', justifyContent: 'center', alignItems: 'center', paddingTop: 10}}>
-                    <TextInput keyboardType='phone-pad' style={styles.inputs} placeholder='Numero Celular' placeholderTextColor={COLORS.gray2}/>
-                    <View style={{width: 10}}/>
-                    {showPicker && ( <DateTimePicker mode='date' display='calendar' value={date} onChange={onChange}/>)}
-                    {!showPicker && (
-                    <Pressable onPress={toggleDatePicker}>
-                        <TextInput style={{height: 30, fontSize: 14, borderColor: COLORS.gray2, borderWidth: 1, borderRadius: 10, paddingTop: 0, paddingHorizontal: 10}} placeholder='Fecha de nacimiento' value={dateOfBirth} onChangeText={setDateOfBirth} placeholderTextColor={COLORS.gray2} editable={false}/>
-                    </Pressable>)}
+                    <TextInput keyboardType='numeric' style={styles.input} placeholder='Número de afiliado' placeholderTextColor={COLORS.gray2}/>
                 </View>
                 <View style={{paddingHorizontal: '4%', paddingTop: '2%'}}>
-                    <SelectList inputStyles={{fontSize: 14, borderRadius: 15}} maxHeight={100} data={tipoDocumento} setSelected={setSelected} placeholder='Tipo de documento' searchPlaceholder='Buscar...'/>
+                    <TextInput keyboardType='default' style={styles.input} placeholder='Nombre de titular' placeholderTextColor={COLORS.gray2}/>
                 </View>
                 <View style={{height: 10}}/>
                 <View style={{flexDirection: 'row', width:'100%', paddingHorizontal: '4%', alignItems:'center', justifyContent:'center'}}>
-                    <TextInput keyboardType='numeric' style={styles.input} placeholder='Número de documento' placeholderTextColor={COLORS.gray2}/>
-                </View>
-                <View style={{flexDirection:'row', paddingHorizontal: '4%', paddingTop: '2%', width:'100%'}}>
-                    <SelectList inputStyles={{fontSize: 14, borderRadius: 15, width: '30%'}} data={pais} setSelected={setSelected} placeholder='País' searchPlaceholder='Buscar...'/>
-                    <View style={{width: 8}}/>
-                    <SelectList inputStyles={{fontSize: 14, borderRadius: 15}} data={pais} setSelected={setSelected} placeholder='Provincia o Estado' searchPlaceholder='Buscar...'/>
-                </View>
-                <View style={{height:10}}/>
-                <View style={{width:'100%', paddingHorizontal:'4%', alignItems:'center', justifyContent:'center'}}>
-                    <TextInput style={styles.input} placeholder='Dirección' placeholderTextColor={COLORS.gray2}/>
+                    <TextInput keyboardType='default' style={styles.input} placeholder='Plan' placeholderTextColor={COLORS.gray2}/>
                 </View>
                 <View style={{height: 20}}/>
                 <View style={{flexDirection:'row', paddingHorizontal:'4%', paddingTop: '2%', width:'100%', alignItems:'center', justifyContent:'center'}}>
-                    <TouchableOpacity onPress={() => router.navigate('')}
+                    <TouchableOpacity onPress={() => router.navigate('register/registerInfoPersonal')}
                         style={{padding: 0, width: '50%', borderRadius: 13, paddingVertical: 10, paddingHorizontal: 10, backgroundColor: COLORS.red, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={{color: COLORS.white, fontSize: 24}}>Cancelar</Text>
+                        <Text style={{color: COLORS.white, fontSize: 24}}>Atrás</Text>
                     </TouchableOpacity>
                     <View style={{width: 10}}/>
-                    <TouchableOpacity
+                    <TouchableOpacity onPress={() => router.navigate('register/registerPassword')}
                     style={{width: '50%', borderRadius: 13, paddingVertical: 10, paddingHorizontal: 10, backgroundColor: COLORS.gray, alignItems: 'center', justifyContent: 'center'}}
                     >
                         <Text style={{color: COLORS.white, fontSize: 24}}>Continuar</Text>

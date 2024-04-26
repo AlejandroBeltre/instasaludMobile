@@ -42,13 +42,9 @@ const Login = () => {
                     <TextInput secureTextEntry={true} style={stylesHome.inputs}/>
                 </View>
                 <View style={{width: '95%', paddingLeft: '35%'}}>
-                    <TouchableOpacity
-                    onPressIn={handlePressIn}
-                    onPressOut={handlePressOut}
-                    style={{ opacity: isPressed ? 0.6 : 1 }}
-                    >
+                    <Link href='password/forgotPassword'>
                         <Text style={{color: COLORS.blue, fontSize: 16, textDecorationLine: 'underline'}}>¿Olvidaste tu contraseña?</Text>
-                    </TouchableOpacity>    
+                    </Link>
                 </View>
                 <View style={{width: '95%', paddingHorizontal: '8%', paddingTop: '20%'}}>
                     <TouchableOpacity
@@ -60,7 +56,7 @@ const Login = () => {
                 </View>
                 <View style={{width: '100%', alignContent: 'center', justifyContent: 'center', paddingTop: '40%', flexDirection: 'row'}}>
                     <Text style={{color: COLORS.white}}>¿No tienes una cuenta? </Text>
-                    <Link href='/registerInfoPersonal'>
+                    <Link href='/register/registerInfoPersonal'>
                         <Text style={{ color: COLORS.blue, textDecorationLine: 'underline' }}>¡Regístrate Aquí!</Text>
                     </Link>
                 </View>

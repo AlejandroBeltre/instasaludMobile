@@ -3,12 +3,10 @@ import { Image, View, Text, SafeAreaView, ImageBackground, TextInput, TouchableO
 import { Stack, useRouter, Link} from 'expo-router';
 import { COLORS } from '../../constants';
 
-const forgotPassword = () => {
+const Home = () => {
     const router = useRouter();
     const headerImageSource = require('../../assets/images/registerHeader.png');
-    const [isPressed, setIsPressed] = useState(false);
-
-    return (
+    return(
         <SafeAreaView style={{flex: 1}}>
             <View style={{height: '20%'}}>
                 <ImageBackground source={headerImageSource} style={{flex: 1, width: '100%'}}>
@@ -45,7 +43,7 @@ const forgotPassword = () => {
                 </View>
             </View>
         </SafeAreaView>
-    )
+    );
 }
 
-export default forgotPassword;
+export default Home;

@@ -48,7 +48,7 @@ const Login = () => {
                 </View>
                 <View style={{width: '95%', paddingHorizontal: '8%', paddingTop: '20%'}}>
                     <TouchableOpacity
-                    onPress={() => router.navigate('Home')}
+                    onPress={() => router.navigate('inicio/inicio')}
                     style={{borderRadius: 30, paddingVertical: 10, borderColor: 'gray', borderWidth: 1, backgroundColor: '#8DB1B230'}}
                     >
                         <Text style={{color: COLORS.white, fontSize: 16, textAlign: 'center'}}>Iniciar Sesión</Text>

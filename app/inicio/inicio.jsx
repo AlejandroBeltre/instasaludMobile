@@ -5,45 +5,69 @@ import { COLORS } from '../../constants';
 
 const Home = () => {
     const router = useRouter();
-    const headerImageSource = require('../../assets/images/registerHeader.png');
+    const userPorfileImageSource = '';
+    const userNames = 'Keisy Polanco';
     return(
         <SafeAreaView style={{flex: 1}}>
-            <View style={{height: '20%'}}>
-                <ImageBackground source={headerImageSource} style={{flex: 1, width: '100%'}}>
-                <TouchableOpacity
-                style={{ paddingLeft: '5%', paddingTop: '18%' }}
-                onPress={() => router.navigate('')} >
-                    <Image style={{ width: 50, height: 50 }} source={require('../../assets/images/arrowBack.png')} />
-                </TouchableOpacity>
-                </ImageBackground>
+            <View style={styles.headerContainer}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.profileImage} source={userPorfileImageSource}/>
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.greet}>¡Hola, {userNames}!</Text>
+                    <Text style={styles.question}>¿Como te sientes hoy?</Text>
+                </View>
             </View>
-            <View style={{padding: '5%'}}>
-                <View style={{alignItems: 'center'}}>
-                    <Text style={{fontSize: 30, fontWeight: 'bold', color: COLORS.black}}>Contraseña olvidada</Text>
-                </View>
-                <Text style={{fontSize: 16, color: COLORS.gray, paddingTop: '5%'}}>Para reajustar su contraseña, envíe su No. Cédula o No. de Record. Si podemos encontrarlo en la base de datos, le enviaremos un email con instrucciones para poder acceder de nuevo.</Text>
-                <View style={{paddingTop: '5%'}}>
-                    <Text style={{fontSize: 16, color: COLORS.gray}}>No. de Record o Cédula</Text>
-                    <TextInput keyboardType='numeric' style={{borderBottomWidth: 1, borderBottomColor: COLORS.gray, padding: 0, margin: 0}}/>
-                </View>
-                <View style={{paddingTop: '10%'}}>
-                    <TouchableOpacity style={{backgroundColor: COLORS.blue, paddingVertical: 10, borderRadius: 30}}>
-                        <Text style={{color: COLORS.white, fontSize: 16, textAlign: 'center'}}>Enviar</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{paddingTop: '30%'}}>
-                    <Text style={{color: COLORS.black, fontSize: 20}}>Contáctanos</Text>
-                    <View style={{flexDirection: 'row'}}>
-                        <Image style={{width: 70, height: 70}} source={require('../../assets/images/contactUs.png')}/>
-                        <Text style={{color: COLORS.gray, fontSize: 16, paddingLeft: '2%'}}>Si tiene dificultades para ingresar a la plataforma llamar al +1 (809) 000-0000 opción 1 o completar el                 <Link href=''>
-                            <Text style={{color: COLORS.blue, fontSize: 16}}>formulario de contacto.</Text>
-                    </Link></Text>
-                    </View>
-                    <Text style={{color: COLORS.gray, fontSize: 16}}>Un integrante de nuestro equipo de Soporte le  estará asistiendo.</Text>
-                </View>
+            <View style={styles.contentContainer}>
+
+            </View>
+            <View style={styles.navBar}>
+
             </View>
         </SafeAreaView>
     );
 }
 
 export default Home;
+
+const styles = {
+    headerContainer: {
+        backgroundColor: '#00B6C9',
+        padding: 16,
+        alignItems: 'center',
+        flexDirection: 'row'
+      },
+      imageContainer: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        overflow: 'hidden',
+        marginRight: 16,
+        borderWidth: 1
+      },
+      profileImage: {
+        width: '100%',
+        height: '100%',
+      },
+      greet: {
+        color: COLORS.white,
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
+      question: {
+        color: COLORS.white,
+        fontSize: 16,
+      },
+      textContainer: {
+        flex: 1,
+      },
+      contentContainer: {
+        flex: 1,
+        backgroundColor: COLORS.white,
+      },
+      navBar: {
+        height: '10%',
+        backgroundColor: COLORS.blue
+      }
+};
+
